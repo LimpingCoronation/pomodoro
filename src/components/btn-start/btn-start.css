@@ -1,0 +1,21 @@
+.btn-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    cursor: pointer;
+    border: 2px solid white;
+    background-color: rgb(0, 0, 0, 0);
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.btn-timer__icon {
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    stroke: white;
+    fill: white;
+}
