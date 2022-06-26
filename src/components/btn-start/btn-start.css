@@ -1,7 +1,6 @@
 .btn-timer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    display: block;
     margin: 50px auto;
     cursor: pointer;
     border: 2px solid white;
@@ -9,13 +8,16 @@
     color: white;
     border-radius: 50%;
     font-size: 20px;
-    padding: 20px;
+    padding: 25px;
 }
 
 .btn-timer__icon {
-    font-size: 20px;
-    width: 32px;
-    height: 32px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 24px;
+    height: 24px;
     stroke: white;
     fill: white;
 }
