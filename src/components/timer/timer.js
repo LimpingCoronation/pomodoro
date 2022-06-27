@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import getZeroTime from "../helpers/getZeroTime";
 
 import "./timer.css"
+import tomato from "./tomato.png"
 
 const Timer = ({ timeLeft }) => {
 
@@ -10,6 +11,7 @@ const Timer = ({ timeLeft }) => {
 
     return (
         <div className="timer">
+            <img src={ tomato } alt="not found" className="timer__img"/>
             <span className="timer__text">{ getZeroTime(minutes.toString()) }:{ getZeroTime(seconds.toString()) }</span>
         </div>
     );

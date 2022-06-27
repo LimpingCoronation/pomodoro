@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Header from "../header/header";
 import Timer from "../timer/timer";
-import Btns from "../btns/btns";
+import Btns from "../btn-start/btns";
+import getZeroTime from "../helpers/getZeroTime";
 
 import "./app.css"
 
@@ -11,7 +11,7 @@ export default class extends Component {
     state = {
         start: false,
         breakTime: false,
-        timeLeft: 5,
+        timeLeft: 25*60,
     }
 
     interval = null;
@@ -23,21 +23,31 @@ export default class extends Component {
     onTimerReset = () => {
         this.setState({
             start: false,
-            timeLeft: 5,
+            breakTime: false,
+            timeLeft: 25*60,
         });
+    }
+
+    timerMinusOne() {
+        this.setState((state) => {
+            const newTimeLeft = state.timeLeft - 1;
+            return {
+                timeLeft: newTimeLeft >= 1 ? newTimeLeft: 0 
+            }
+        })
     }
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            if (this.state.start) {
-                this.setState((state) => {
-                    const newTimeLeft = state.timeLeft - 1;
-                    return {
-                        timeLeft: newTimeLeft >= 1 ? newTimeLeft: 0 
-                    }
-                })
+            if (this.state.start && !this.state.breakTime) {
+                this.timerMinusOne()
             }
-            if(this.state.timeLeft === 0) this.setState({ start: false })
+            else if(this.state.start && this.state.breakTime) {
+                this.timerMinusOne()
+            }
+            if(this.state.timeLeft === 0) {
+                this.setState({ breakTime: !this.state.breakTime, timeLeft: !this.state.breakTime ? 5*60 : 25*60 });
+            }
         }, 1000)
     }
 
@@ -49,7 +59,6 @@ export default class extends Component {
         return (
             <div className="app-wrapper">
                 <div>
-                    <Header />
                     <Timer timeLeft={ this.state.timeLeft } />
                     <Btns onTimerStart={ this.onTimerStart } onTimerReset={ this.onTimerReset } start={ this.state.start } />
                 </div>

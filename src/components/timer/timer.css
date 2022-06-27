@@ -1,8 +1,23 @@
 .timer {
-    margin-top: 100px;
-    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 300px;
+    width: 300px;
 }
 
 .timer__text {
+    position: relative;
+    z-index: 5;
     font-size: 72px;
+    color: white;
+}
+
+.timer__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
 }
