@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./btn-start.css";
+import "./btns.css";
 
-const BtnStart = (props) => {
+const Btns = (props) => {
 
     const play = (
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -30,10 +30,13 @@ const BtnStart = (props) => {
     const render = props.start ? pause : play;
 
     return (
-        <button className="btn-timer" onClick={ props.onTimerStart }>
-            { render }
-        </button>
+        <div className="btn-container">
+            <button className="btn-timer" onClick={ props.onTimerStart }>
+                { render }
+            </button>
+            <button className="btn-reset" onClick= { props.onTimerReset }>Reset</button>
+        </div>
     );
 }
 
-export default BtnStart;
+export default Btns;

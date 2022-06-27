@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Header from "../header/header";
 import Timer from "../timer/timer";
-import BtnStart from "../btn-start/btn-start";
+import Btns from "../btns/btns";
 
 import "./app.css"
 
@@ -10,6 +10,7 @@ export default class extends Component {
 
     state = {
         start: false,
+        breakTime: false,
         timeLeft: 5,
     }
 
@@ -17,6 +18,13 @@ export default class extends Component {
 
     onTimerStart = () => {
         this.setState({ start: !this.state.start });
+    }
+
+    onTimerReset = () => {
+        this.setState({
+            start: false,
+            timeLeft: 5,
+        });
     }
 
     componentDidMount() {
@@ -43,7 +51,7 @@ export default class extends Component {
                 <div>
                     <Header />
                     <Timer timeLeft={ this.state.timeLeft } />
-                    <BtnStart onTimerStart={ this.onTimerStart } start={ this.state.start } />
+                    <Btns onTimerStart={ this.onTimerStart } onTimerReset={ this.onTimerReset } start={ this.state.start } />
                 </div>
             </div>
         );
